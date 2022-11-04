@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class Field : MonoBehaviour
+namespace GameBoxClicker
 {
-    [SerializeField] private Transform _spawnTransfrom;
-
-
-    public bool IsEmpty { get; set; }
-    public Transform SpawnTransform => _spawnTransfrom;
-    public Content CurrentContent { get; set; }
-
-    private void Awake()
+    public class Field : MonoBehaviour
     {
-        IsEmpty = true;
+        [SerializeField] private Transform _spawnTransfrom;
+
+
+        public bool IsEmpty { get; set; }
+        public Transform SpawnTransform => _spawnTransfrom;
+        public Content CurrentContent { get; set; }
+
+        private void Awake()
+        {
+            IsEmpty = true;
+        }
     }
 }

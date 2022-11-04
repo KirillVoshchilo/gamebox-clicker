@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7785666471401310231}
   - component: {fileID: 3658654846161263674}
   - component: {fileID: -5823701364655375605}
+  - component: {fileID: -880349551860146351}
   m_Layer: 0
   m_Name: Content_5
   m_TagString: Untagged
@@ -112,6 +113,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _upgradeTo: {fileID: 0}
   _upgradeFrom: {fileID: -2379096365956377775, guid: 0061f32d4ab07d6479dde3f94d1232c6, type: 3}
-  _earnPerSecond: 5
-  _earnPerClick: 1
-  _earnPerFinishClick: 0
+--- !u!114 &-880349551860146351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848758726174648840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266c8ac8dbcc90048a84f2796c67b07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _earnPerTime: 5
+  _delayBetweenEarn: 1
+  _onEarnResources: {fileID: 11400000, guid: 0f4c1c398c4e0a24482f697a390dc989, type: 2}
