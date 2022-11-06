@@ -42,7 +42,7 @@ namespace GameBoxClicker
             int count = hits.Length;
             for (int k = 0; k < count; k++)
             {
-                if (hits[k].collider.gameObject.TryGetComponent<Field>(out Field field))
+                if (hits[k].collider.gameObject.TryGetComponent(out Field field))
                 {
                     _targetPosition = new Vector3(hits[k].point.x, transform.position.y, hits[k].point.z);
                     return;
