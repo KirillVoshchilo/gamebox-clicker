@@ -11,11 +11,10 @@ namespace GameBoxClicker
         public static bool HoldClick;
 
         private PlayerInput _playerInput;
-        private bool _press;
-
 
         private void Awake()
         {
+            HoldClick = false;
             _playerInput = new PlayerInput();
             _playerInput.Game.SetCallbacks(this);
             _playerInput.Game.Enable();
@@ -23,23 +22,7 @@ namespace GameBoxClicker
 
         public void OnClick(InputAction.CallbackContext context)
         {
-#if UNITY_EDITOR
-            if (!_press)
-            {
-                HoldClick = true;
-                OnclickEvent?.Invoke();
-            }
-            else HoldClick = false;
-            _press = !_press;
-#endif
-#if PLATFORM_ANDROID
-            if (context.phase==InputActionPhase.Started)
-            {
-                HoldClick = true;
-                OnclickEvent?.Invoke();
-            }
-            if (context.phase == InputActionPhase.Performed) HoldClick = false;
-#endif
+            HoldClick = context.control.IsPressed();
         }
         public void OnPoint(InputAction.CallbackContext context)
         {
