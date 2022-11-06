@@ -18,23 +18,43 @@ MonoBehaviour:
   m_GUID: cfcaf2f8a191cb74891c55fb57cdee07
   m_SerializeEntries:
   - m_GUID: cd6c31bbc80cf5a47a135c36b3f06038
-    m_Address: Assets/Prefabs/FieldContent/Content_1.prefab
+    m_Address: Content_1
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: e6959c52dea07e94f9fffac19fdbff6c
-    m_Address: Assets/Prefabs/FieldContent/Content_2.prefab
+    m_Address: Content_2
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: b788997a9d69c5c4e9fcf71890eb1e64
-    m_Address: Assets/Prefabs/FieldContent/Content_3.prefab
+    m_Address: Content_3
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 0061f32d4ab07d6479dde3f94d1232c6
-    m_Address: Assets/Prefabs/FieldContent/Content_4.prefab
+    m_Address: Content_4
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: ea84f6074049b6b489c65aa53f7a576c
-    m_Address: Assets/Prefabs/FieldContent/Content_5.prefab
+    m_Address: Content_5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9faf17ee5e313604b8c08ae8edc6377d
+    m_Address: Content_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 528015d20dfbdda46a6acf3526ade341
+    m_Address: Content_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4cccd7e1c2bb5db459b5e5889e8d978f
+    m_Address: Content_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fab2eeb3a4661774c965de3dbd4816a2
+    m_Address: Content_4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3d4619ef82a193a4a8e29aa7c7781390
+    m_Address: Content_5
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

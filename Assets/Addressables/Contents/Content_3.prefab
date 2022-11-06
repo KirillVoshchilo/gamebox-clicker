@@ -113,8 +113,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f624afd6f3b5cf146bba92127ad3dada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeTo: {fileID: -2379096365956377775, guid: 0061f32d4ab07d6479dde3f94d1232c6, type: 3}
-  _upgradeFrom: {fileID: 6873547046758866759, guid: e6959c52dea07e94f9fffac19fdbff6c, type: 3}
+  _upgradeTo:
+    m_AssetGUID: 0061f32d4ab07d6479dde3f94d1232c6
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _thisObjectReference:
+    m_AssetGUID: b788997a9d69c5c4e9fcf71890eb1e64
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _collider: {fileID: 3658654846161263674}
 --- !u!114 &824887598429576072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,8 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266c8ac8dbcc90048a84f2796c67b07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _earnPerTime: 3
-  _delayBetweenEarn: 1
+  _earnPerTime: 4
+  _delayBetweenEarn: 5
   _onEarnResources: {fileID: 11400000, guid: 0f4c1c398c4e0a24482f697a390dc989, type: 2}
 --- !u!114 &-8426634613212631025
 MonoBehaviour:
@@ -142,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774f3d8de61faab418acad4c58ad9602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _earnPerTime: 3
+  _earnPerTime: 4
   _onEarnResources: {fileID: 11400000, guid: 0f4c1c398c4e0a24482f697a390dc989, type: 2}
 --- !u!114 &7445585794205255159
 MonoBehaviour:
@@ -156,3 +165,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54a10e9914826e43bdc1620ade54e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movingSpeed: 0.5
+  _distanceBeforeDrag: 50
+  OnDroped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3379964382569417698}
+        m_TargetAssemblyTypeName: GameBoxClicker.MergeContent, Assembly-CSharp
+        m_MethodName: CheckForPotentialMerge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

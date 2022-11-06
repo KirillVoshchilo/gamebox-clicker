@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace GameBoxClicker
@@ -10,7 +11,7 @@ namespace GameBoxClicker
         [SerializeField] private float _movingSpeed;
         [SerializeField] private float _distanceBeforeDrag;
 
-        public event Action OnDroped;
+        public UnityEvent OnDroped;
 
         private Vector3 _defaultPosition;
         private Vector3 _targetPosition;
@@ -72,6 +73,7 @@ namespace GameBoxClicker
             _calcTargetRoutine = StartCoroutine(CalcTergetPositionProcess());
             waiter = new WaitUntil(CheckForDrop);
             yield return waiter;
+            OnDroped?.Invoke();
             StopCoroutine(_calcTargetRoutine);
             _targetPosition = _defaultPosition;
             waiter = new WaitUntil(CheckForTurnBack);

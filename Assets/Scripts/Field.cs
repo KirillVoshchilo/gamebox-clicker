@@ -9,7 +9,7 @@ namespace GameBoxClicker
 
         public bool IsEmpty { get; set; }
         public Transform SpawnTransform => _spawnTransfrom;
-        public Content CurrentContent { get; set; }
+        public MergeContent CurrentContent { get; set; }
 
         private void Awake()
         {

@@ -40,7 +40,9 @@ namespace GameBoxClicker
             AsyncOperationHandle<GameObject> handle = Addressables
                 .InstantiateAsync(_creatingContent, targetTransform.position, targetTransform.rotation, targetTransform);
             await handle.Task;
-            _fields[fieldNumber].CurrentContent = handle.Result.GetComponent<Content>();
+            MergeContent content = handle.Result.GetComponent<MergeContent>();
+            _fields[fieldNumber].CurrentContent = content;
+            content.Field = _fields[fieldNumber];
         }
         private bool CheckFofreeField(out List<int> freeFieldNumbers)
         {

@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4848758726174648840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.17, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -113,8 +113,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f624afd6f3b5cf146bba92127ad3dada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeTo: {fileID: 6873547046758866759, guid: e6959c52dea07e94f9fffac19fdbff6c, type: 3}
-  _upgradeFrom: {fileID: 0}
+  _upgradeTo:
+    m_AssetGUID: e6959c52dea07e94f9fffac19fdbff6c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _thisObjectReference:
+    m_AssetGUID: cd6c31bbc80cf5a47a135c36b3f06038
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _collider: {fileID: 3658654846161263674}
 --- !u!114 &8945982983734864624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,3 +167,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movingSpeed: 0.3
   _distanceBeforeDrag: 50
+  OnDroped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7836979725895297310}
+        m_TargetAssemblyTypeName: GameBoxClicker.MergeContent, Assembly-CSharp
+        m_MethodName: CheckForPotentialMerge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
