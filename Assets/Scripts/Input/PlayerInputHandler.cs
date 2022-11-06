@@ -1,12 +1,10 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace GameBoxClicker
+namespace GameBoxClicker.Input
 {
     public class PlayerInputHandler : MonoBehaviour, PlayerInput.IGameActions
     {
-        public static event Action OnclickEvent;
         public static Vector2 PointerPosition;
         public static bool HoldClick;
 

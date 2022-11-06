@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _earnPerTime: 8
-  _delayBetweenEarn: 5
+  _delayBetweenEarn: 2
   _onEarnResources: {fileID: 11400000, guid: 0f4c1c398c4e0a24482f697a390dc989, type: 2}
 --- !u!114 &2354517137095189763
 MonoBehaviour:
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54a10e9914826e43bdc1620ade54e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movingSpeed: 0.5
+  _movingSpeed: 15
   _distanceBeforeDrag: 50
   OnDroped:
     m_PersistentCalls:

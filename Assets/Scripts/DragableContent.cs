@@ -1,3 +1,4 @@
+using GameBoxClicker.Input;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -33,7 +34,7 @@ namespace GameBoxClicker
 
         private void MoveToTarget()
         {
-            transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _movingSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _movingSpeed*Time.deltaTime);
         }
         private void SetPointerPositionAsTarget()
         {
