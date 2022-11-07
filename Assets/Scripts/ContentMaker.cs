@@ -1,3 +1,4 @@
+using GameBoxClicker.AppEvents;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,28 +8,47 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace GameBoxClicker
 {
-    public class ContentMaker : MonoBehaviour
+    public class ContentMaker : MonoBehaviour, IPauseHandler
     {
-
         [SerializeField] private AssetReference _creatingContent;
         [SerializeField] private int _maxContentCount;
         [SerializeField] private float _delayBetweenSpawn;
+        [SerializeField] private ScriptableEvent _onPauseGame;
+        [SerializeField] private ScriptableEvent _onContinueGame;
+
         [HideInInspector][SerializeField] private Field[] _fields;
         private WaitForSeconds _waiter;
         private int _currentContentCount;
+        private Coroutine _spawnProcessRoutine;
 
         private void Awake()
         {
             _currentContentCount = 0;
             _waiter = new WaitForSeconds(_delayBetweenSpawn);
-            StartCoroutine(SpawnProcess());
+            _onPauseGame.RegisterListener(PauseGame);
+            _onContinueGame.RegisterListener(ContinueGame);
+            _spawnProcessRoutine = StartCoroutine(SpawnProcess());
+        }
+        private void OnDestroy()
+        {
+            _onPauseGame.UnregisterListener(PauseGame);
+            _onContinueGame.UnregisterListener(ContinueGame);
+        }
+
+        public void PauseGame()
+        {
+            StopCoroutine(_spawnProcessRoutine);
+        }
+        public void ContinueGame()
+        {
+            _spawnProcessRoutine = StartCoroutine(SpawnProcess());
         }
 
         private IEnumerator SpawnProcess()
         {
             yield return _waiter;
             Task task = CreateContent();
-            StartCoroutine(SpawnProcess());
+            _spawnProcessRoutine = StartCoroutine(SpawnProcess());
         }
         private async Task CreateContent()
         {
@@ -54,7 +74,6 @@ namespace GameBoxClicker
             }
             return freeFieldNumbers.Count != 0;
         }
-
 
         [ContextMenu("Обновить используемые поля")]
         private void GetFields()

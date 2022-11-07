@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 42924347}
   - component: {fileID: 42924346}
   - component: {fileID: 42924348}
+  - component: {fileID: 42924349}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -253,6 +254,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3929b821bd423a741bfd8926dfbd47ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &42924349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42924345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36fbc4c0fdc6d654b861a7c28919fb5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &53900311
@@ -1915,7 +1928,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 881839357}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 70fe45f009466c441a7e8c15003f0ea0, type: 2}
+        m_TargetAssemblyTypeName: GameBoxClicker.AppEvents.ScriptableEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &881839357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2677,7 +2702,7 @@ GameObject:
   - component: {fileID: 1262759806}
   - component: {fileID: 1262759805}
   m_Layer: 0
-  m_Name: ExitBUtton
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2747,7 +2772,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1262759806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: a047f414e8a52f74599b1ae988260266, type: 2}
+        m_TargetAssemblyTypeName: GameBoxClicker.AppEvents.ScriptableEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1262759806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3687,7 +3724,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1655881416}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 9be58d4de329c524f83545809ba16a04, type: 2}
+        m_TargetAssemblyTypeName: GameBoxClicker.AppEvents.ScriptableEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1655881416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4100,7 +4149,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1820404897}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f8631f84bf4156046922c3871913a45c, type: 2}
+        m_TargetAssemblyTypeName: GameBoxClicker.AppEvents.ScriptableEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 823793559}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1820404897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4366,6 +4439,8 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _maxContentCount: 100
   _delayBetweenSpawn: 5
+  _onPauseGame: {fileID: 11400000, guid: f8631f84bf4156046922c3871913a45c, type: 2}
+  _onContinueGame: {fileID: 11400000, guid: 24d1b067060ddc84ab4c6c5d4db380fb, type: 2}
   _fields:
   - {fileID: 945468809}
   - {fileID: 1850090312}
@@ -4699,7 +4774,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2011519935}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 24d1b067060ddc84ab4c6c5d4db380fb, type: 2}
+        m_TargetAssemblyTypeName: GameBoxClicker.AppEvents.ScriptableEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 823793559}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2011519935
 MonoBehaviour:
   m_ObjectHideFlags: 0
