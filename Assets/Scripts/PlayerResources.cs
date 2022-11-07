@@ -3,10 +3,12 @@ using UnityEngine;
 
 namespace GameBoxClicker
 {
-    public class PlayerResources : MonoBehaviour
+    public class PlayerResources : MonoBehaviour, IStartEndGame
     {
         [SerializeField] private ScriptableIntEvent _onEarnResources;
         [SerializeField] private ScriptableIntEvent _onResourcesChanged;
+        [SerializeField] private ScriptableEvent _onStartNewGame;
+        [SerializeField] private ScriptableEvent _onEndGame;
         private int _currentResources;
 
         public int CurrentResources
@@ -25,15 +27,29 @@ namespace GameBoxClicker
         private void Awake()
         {
             _onEarnResources.RegisterListener(AddResources);
+            _onStartNewGame.RegisterListener(StartNewGame);
+            _onEndGame.RegisterListener(EndGame);
         }
         private void OnDestroy()
         {
             _onEarnResources.UnregisterListener(AddResources);
+            _onStartNewGame.UnregisterListener(StartNewGame);
+            _onEndGame.UnregisterListener(EndGame);
         }
 
         private void AddResources(int value)
         {
             CurrentResources += value;
+        }
+
+        public void StartNewGame()
+        {
+            CurrentResources = 0;
+        }
+
+        public void EndGame()
+        {
+            CurrentResources = 0;
         }
     }
 }

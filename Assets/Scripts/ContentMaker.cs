@@ -8,13 +8,15 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace GameBoxClicker
 {
-    public class ContentMaker : MonoBehaviour, IPauseHandler
+    public class ContentMaker : MonoBehaviour, IPauseHandler, IStartEndGame
     {
         [SerializeField] private AssetReference _creatingContent;
         [SerializeField] private int _maxContentCount;
         [SerializeField] private float _delayBetweenSpawn;
         [SerializeField] private ScriptableEvent _onPauseGame;
         [SerializeField] private ScriptableEvent _onContinueGame;
+        [SerializeField] private ScriptableEvent _onStartNewGame;
+        [SerializeField] private ScriptableEvent _onEndGame;
 
         [HideInInspector][SerializeField] private Field[] _fields;
         private WaitForSeconds _waiter;
@@ -23,18 +25,14 @@ namespace GameBoxClicker
 
         private void Awake()
         {
-            _currentContentCount = 0;
-            _waiter = new WaitForSeconds(_delayBetweenSpawn);
-            _onPauseGame.RegisterListener(PauseGame);
-            _onContinueGame.RegisterListener(ContinueGame);
-            _spawnProcessRoutine = StartCoroutine(SpawnProcess());
+            _onStartNewGame.RegisterListener(StartNewGame);
+            _onEndGame.RegisterListener(EndGame);
         }
         private void OnDestroy()
         {
-            _onPauseGame.UnregisterListener(PauseGame);
-            _onContinueGame.UnregisterListener(ContinueGame);
+            _onStartNewGame.UnregisterListener(StartNewGame);
+            _onEndGame.UnregisterListener(EndGame);
         }
-
         public void PauseGame()
         {
             StopCoroutine(_spawnProcessRoutine);
@@ -42,6 +40,30 @@ namespace GameBoxClicker
         public void ContinueGame()
         {
             _spawnProcessRoutine = StartCoroutine(SpawnProcess());
+        }
+        public void StartNewGame()
+        {
+            int count = _fields.Length;
+            for (int k = 0; k < count; k++)
+            {
+                _fields[k].ClearTheField();
+            }
+            _currentContentCount = 0;
+            _waiter = new WaitForSeconds(_delayBetweenSpawn);
+            _onPauseGame.RegisterListener(PauseGame);
+            _onContinueGame.RegisterListener(ContinueGame);
+            _spawnProcessRoutine = StartCoroutine(SpawnProcess());
+        }
+        public void EndGame()
+        {
+            StopAllCoroutines();
+            int count = _fields.Length;
+            for (int k = 0; k < count; k++)
+            {
+                _fields[k].ClearTheField();
+            }
+            _onPauseGame.UnregisterListener(PauseGame);
+            _onContinueGame.UnregisterListener(ContinueGame);
         }
 
         private IEnumerator SpawnProcess()
@@ -80,5 +102,7 @@ namespace GameBoxClicker
         {
             _fields = GetComponentsInChildren<Field>();
         }
+
+
     }
 }

@@ -43,8 +43,12 @@ namespace GameBoxClicker
                 .InstantiateAsync(_upgradeTo, content.transform.position, content.transform.rotation, content.Field.SpawnTransform);
             handle.Completed += (AsyncOperationHandle<GameObject> handle) =>
               {
-                  handle.Result.GetComponent<MergeContent>().Field = content.Field;
+                  MergeContent newContent = handle.Result.GetComponent<MergeContent>();
+                  newContent.Field = content.Field;
+                  content.Field.CurrentContent = newContent;
               };
+            this.Field.CurrentContent = null;
+
             Destroy(content.gameObject);
             Destroy(this.gameObject);
         }

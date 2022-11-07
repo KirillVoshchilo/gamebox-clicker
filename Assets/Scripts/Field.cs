@@ -6,14 +6,16 @@ namespace GameBoxClicker
     {
         [SerializeField] private Transform _spawnTransfrom;
 
-
         public bool IsEmpty { get; set; }
         public Transform SpawnTransform => _spawnTransfrom;
         public MergeContent CurrentContent { get; set; }
 
-        private void Awake()
+        public void ClearTheField()
         {
             IsEmpty = true;
+            if (CurrentContent != null) Destroy(CurrentContent.gameObject);
+            CurrentContent = null;
         }
+
     }
 }
