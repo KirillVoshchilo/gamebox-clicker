@@ -1,3 +1,4 @@
+using GameBoxClicker.AppEvents;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -9,6 +10,7 @@ namespace GameBoxClicker
         [SerializeField] private AssetReference _upgradeTo;
         [SerializeField] private AssetReference _thisObjectReference;
         [SerializeField] private SphereCollider _collider;
+        [SerializeField] private ScriptableMergeEvent _onMergAction;
         private float _radius;
 
         public Field Field { get; set; }
@@ -43,14 +45,14 @@ namespace GameBoxClicker
                 .InstantiateAsync(_upgradeTo, content.transform.position, content.transform.rotation, content.Field.SpawnTransform);
             handle.Completed += (AsyncOperationHandle<GameObject> handle) =>
               {
+                  Addressables.ReleaseInstance(content.gameObject);
                   MergeContent newContent = handle.Result.GetComponent<MergeContent>();
                   newContent.Field = content.Field;
                   content.Field.CurrentContent = newContent;
+                  _onMergAction.Raise(content, this);
               };
             this.Field.CurrentContent = null;
-
-            Destroy(content.gameObject);
-            Destroy(this.gameObject);
+            Addressables.ReleaseInstance(this.gameObject);
         }
     }
 }

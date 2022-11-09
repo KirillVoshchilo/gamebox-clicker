@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace GameBoxClicker
 {
@@ -13,7 +14,7 @@ namespace GameBoxClicker
         public void ClearTheField()
         {
             IsEmpty = true;
-            if (CurrentContent != null) Destroy(CurrentContent.gameObject);
+            if (CurrentContent != null) Addressables.ReleaseInstance(CurrentContent.gameObject);
             CurrentContent = null;
         }
 
