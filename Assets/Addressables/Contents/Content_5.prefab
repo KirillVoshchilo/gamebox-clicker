@@ -113,17 +113,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f624afd6f3b5cf146bba92127ad3dada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeTo:
-    m_AssetGUID: 
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
   _thisObjectReference:
     m_AssetGUID: ea84f6074049b6b489c65aa53f7a576c
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   _collider: {fileID: 3658654846161263674}
+  _onMerge:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 124f4524af8996946a0f032fe6761165, type: 2}
+        m_TargetAssemblyTypeName: MergeActions, Assembly-CSharp
+        m_MethodName: LastMerge
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-880349551860146351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _earnPerTime: 16
-  _delayBetweenEarn: 2
+  _delayBetweenEarn: 1
   _onEarnResources: {fileID: 11400000, guid: 0f4c1c398c4e0a24482f697a390dc989, type: 2}
   _onPauseGame: {fileID: 11400000, guid: f8631f84bf4156046922c3871913a45c, type: 2}
   _onContinueGame: {fileID: 11400000, guid: 24d1b067060ddc84ab4c6c5d4db380fb, type: 2}
@@ -175,4 +185,16 @@ MonoBehaviour:
   _onContinueGame: {fileID: 11400000, guid: 24d1b067060ddc84ab4c6c5d4db380fb, type: 2}
   OnDroped:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -5823701364655375605}
+        m_TargetAssemblyTypeName: GameBoxClicker.MergeContent, Assembly-CSharp
+        m_MethodName: CheckForPotentialMerge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

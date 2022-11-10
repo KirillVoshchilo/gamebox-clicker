@@ -230,6 +230,7 @@ MonoBehaviour:
   _onResourcesChanged: {fileID: 11400000, guid: abd2b054a3fdcc542892e694f92abff0, type: 2}
   _onStartNewGame: {fileID: 11400000, guid: 70fe45f009466c441a7e8c15003f0ea0, type: 2}
   _onEndGame: {fileID: 11400000, guid: a047f414e8a52f74599b1ae988260266, type: 2}
+  _onLastMergeEarn: {fileID: 11400000, guid: 8730bad911629894886ec1e10b85b9a6, type: 2}
 --- !u!4 &42924347
 Transform:
   m_ObjectHideFlags: 0
@@ -4488,8 +4489,8 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  _maxContentCount: 100
-  _delayBetweenSpawn: 5
+  _maxContentCount: 15
+  _delayBetweenSpawn: 0.8
   _onPauseGame: {fileID: 11400000, guid: f8631f84bf4156046922c3871913a45c, type: 2}
   _onContinueGame: {fileID: 11400000, guid: 24d1b067060ddc84ab4c6c5d4db380fb, type: 2}
   _onStartNewGame: {fileID: 11400000, guid: 70fe45f009466c441a7e8c15003f0ea0, type: 2}

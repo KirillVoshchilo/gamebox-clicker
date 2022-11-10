@@ -20,7 +20,6 @@ namespace GameBoxClicker
 
         [HideInInspector][SerializeField] private Field[] _fields;
         private WaitForSeconds _waiter;
-        private int _currentContentCount;
         private Coroutine _spawnProcessRoutine;
 
         private void Awake()
@@ -48,7 +47,6 @@ namespace GameBoxClicker
             {
                 _fields[k].ClearTheField();
             }
-            _currentContentCount = 0;
             _waiter = new WaitForSeconds(_delayBetweenSpawn);
             _onPauseGame.RegisterListener(PauseGame);
             _onContinueGame.RegisterListener(ContinueGame);
@@ -74,10 +72,10 @@ namespace GameBoxClicker
         }
         private async Task CreateContent()
         {
-            if (!CheckFofreeField(out List<int> freeFieldNumbers) || _currentContentCount >= _maxContentCount) return;
+           bool isThereFreeField= CheckFofreeField(out List<int> freeFieldNumbers);
+            if (!isThereFreeField || _fields.Length- freeFieldNumbers.Count >= _maxContentCount) return;
             int fieldNumber = freeFieldNumbers[Random.Range(0, freeFieldNumbers.Count)];
             _fields[fieldNumber].IsEmpty = false;
-            _currentContentCount++;
             Transform targetTransform = _fields[fieldNumber].SpawnTransform;
             AsyncOperationHandle<GameObject> handle = Addressables
                 .InstantiateAsync(_creatingContent, targetTransform.position, targetTransform.rotation, targetTransform);

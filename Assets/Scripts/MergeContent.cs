@@ -1,16 +1,14 @@
-using GameBoxClicker.AppEvents;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.Events;
 
 namespace GameBoxClicker
 {
     public class MergeContent : MonoBehaviour
     {
-        [SerializeField] private AssetReference _upgradeTo;
         [SerializeField] private AssetReference _thisObjectReference;
         [SerializeField] private SphereCollider _collider;
-        [SerializeField] private ScriptableMergeEvent _onMergAction;
+        [SerializeField] private UnityEvent<MergeContent, MergeContent> _onMerge;
         private float _radius;
 
         public Field Field { get; set; }
@@ -32,27 +30,11 @@ namespace GameBoxClicker
                 {
                     if (content != this && content.ObjetReference == ObjetReference)
                     {
-                        MergWith(content);
+                        _onMerge?.Invoke(content, this);
                         return;
                     }
                 }
             }
-        }
-
-        private void MergWith(MergeContent content)
-        {
-            AsyncOperationHandle<GameObject> handle = Addressables
-                .InstantiateAsync(_upgradeTo, content.transform.position, content.transform.rotation, content.Field.SpawnTransform);
-            handle.Completed += (AsyncOperationHandle<GameObject> handle) =>
-              {
-                  Addressables.ReleaseInstance(content.gameObject);
-                  MergeContent newContent = handle.Result.GetComponent<MergeContent>();
-                  newContent.Field = content.Field;
-                  content.Field.CurrentContent = newContent;
-                  _onMergAction.Raise(content, this);
-              };
-            this.Field.CurrentContent = null;
-            Addressables.ReleaseInstance(this.gameObject);
         }
     }
 }

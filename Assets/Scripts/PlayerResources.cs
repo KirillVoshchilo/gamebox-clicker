@@ -9,6 +9,7 @@ namespace GameBoxClicker
         [SerializeField] private ScriptableIntEvent _onResourcesChanged;
         [SerializeField] private ScriptableEvent _onStartNewGame;
         [SerializeField] private ScriptableEvent _onEndGame;
+        [SerializeField] private ScriptableIntEvent _onLastMergeEarn;
         private int _currentResources;
 
         public int CurrentResources
@@ -26,6 +27,7 @@ namespace GameBoxClicker
 
         private void Awake()
         {
+            _onLastMergeEarn.RegisterListener(AddResources);
             _onEarnResources.RegisterListener(AddResources);
             _onStartNewGame.RegisterListener(StartNewGame);
             _onEndGame.RegisterListener(EndGame);
@@ -35,6 +37,7 @@ namespace GameBoxClicker
             _onEarnResources.UnregisterListener(AddResources);
             _onStartNewGame.UnregisterListener(StartNewGame);
             _onEndGame.UnregisterListener(EndGame);
+            _onLastMergeEarn.UnregisterListener(AddResources);
         }
 
         private void AddResources(int value)

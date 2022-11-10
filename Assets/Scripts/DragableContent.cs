@@ -1,6 +1,5 @@
 using GameBoxClicker.AppEvents;
 using GameBoxClicker.Input;
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;

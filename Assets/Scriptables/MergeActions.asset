@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7f84e23752a2940a1bb78bd8c3404b, type: 3}
+  m_Name: MergeActions
+  m_EditorClassIdentifier: 
+  _mergeContentAssets:
+  - m_AssetGUID: cd6c31bbc80cf5a47a135c36b3f06038
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: e6959c52dea07e94f9fffac19fdbff6c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b788997a9d69c5c4e9fcf71890eb1e64
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 0061f32d4ab07d6479dde3f94d1232c6
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: ea84f6074049b6b489c65aa53f7a576c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _onLastMerge: {fileID: 11400000, guid: 8730bad911629894886ec1e10b85b9a6, type: 2}
+  _onLastMergeEarn: 500
