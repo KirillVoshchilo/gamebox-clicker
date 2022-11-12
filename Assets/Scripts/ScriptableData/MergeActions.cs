@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace GameBoxClicker.MergeActions
+namespace GameBoxClicker.ScriptableData
 {
     [CreateAssetMenu(fileName = "new MergeActions", menuName = "MergeActions")]
     public class MergeActions : ScriptableObject

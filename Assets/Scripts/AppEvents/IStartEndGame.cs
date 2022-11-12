@@ -1,4 +1,4 @@
-namespace GameBoxClicker
+namespace GameBoxClicker.AppEvents
 {
     public interface IStartEndGame
     {
