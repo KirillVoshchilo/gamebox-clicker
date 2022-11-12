@@ -1,8 +1,7 @@
-using GameBoxClicker;
 using GameBoxClicker.AppEvents;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace GameBoxClicker.MergeActions
 {
@@ -15,24 +14,24 @@ namespace GameBoxClicker.MergeActions
 
         public void OrdinaryMerge(MergeContent target, MergeContent current)
         {
-            AsyncOperationHandle<GameObject> handle = Addressables
-                .InstantiateAsync(ChooseNextLevelContent(target.ObjetReference), target.transform.position, target.transform.rotation, target.Field.SpawnTransform);
-            handle.Completed += (AsyncOperationHandle<GameObject> handle) =>
-            {
-                MergeContent newContent = handle.Result.GetComponent<MergeContent>();
-                newContent.Field = target.Field;
-                newContent.Field.CurrentContent = newContent;
-            };
-            current.Field.ClearTheField();
-            Addressables.ReleaseInstance(target.gameObject);
-            Addressables.ReleaseInstance(current.gameObject);
+            Task task = AddressablesPreloader.LoadFromReference(ChooseNextLevelContent(target.ObjetReference), (GameObject obj) =>
+              {
+                  Destroy(current.gameObject);
+                  Destroy(target.gameObject);
+                  current.Field.ClearTheField();
+                  GameObject gameObject = Instantiate(obj, target.transform.position, target.transform.rotation, target.Field.SpawnTransform);
+                  MergeContent newContent = gameObject.GetComponent<MergeContent>();
+                  newContent.Field = target.Field;
+                  newContent.Field.CurrentContent = newContent;
+              });
+
         }
         public void LastMerge(MergeContent target, MergeContent current)
         {
             current.Field.ClearTheField();
-            Addressables.ReleaseInstance(target.gameObject);
-            Addressables.ReleaseInstance(current.gameObject);
             _onLastMerge.Raise(_onLastMergeEarn);
+            Destroy(current.gameObject);
+            Destroy(target.gameObject);
         }
 
         private AssetReference ChooseNextLevelContent(string currentReference)

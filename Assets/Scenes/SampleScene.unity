@@ -4636,8 +4636,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4f861a8f846f44c96f038ed9c4a245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _creatingContent:
-    m_AssetGUID: cd6c31bbc80cf5a47a135c36b3f06038
+  _levelContentReferences:
+  - m_AssetGUID: cd6c31bbc80cf5a47a135c36b3f06038
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: e6959c52dea07e94f9fffac19fdbff6c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b788997a9d69c5c4e9fcf71890eb1e64
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 0061f32d4ab07d6479dde3f94d1232c6
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: ea84f6074049b6b489c65aa53f7a576c
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

@@ -1,16 +1,16 @@
 using GameBoxClicker.AppEvents;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace GameBoxClicker
 {
     public class ContentMaker : MonoBehaviour, IPauseHandler, IStartEndGame
     {
-        [SerializeField] private AssetReference _creatingContent;
+        [SerializeField] private AssetReference[] _levelContentReferences;
         [SerializeField] private int _maxContentCount;
         [SerializeField] private float _delayBetweenSpawn;
         [SerializeField] private ScriptableEvent _onPauseGame;
@@ -21,16 +21,20 @@ namespace GameBoxClicker
         [HideInInspector][SerializeField] private Field[] _fields;
         private WaitForSeconds _waiter;
         private Coroutine _spawnProcessRoutine;
+        private GameObject[] _levelContents;
+        private event Action OnDataPreloaded;
 
         private void Awake()
         {
             _onStartNewGame.RegisterListener(StartNewGame);
             _onEndGame.RegisterListener(EndGame);
+            OnDataPreloaded += StartSpawn;
         }
         private void OnDestroy()
         {
             _onStartNewGame.UnregisterListener(StartNewGame);
             _onEndGame.UnregisterListener(EndGame);
+            OnDataPreloaded -= StartSpawn;
         }
         public void PauseGame()
         {
@@ -50,7 +54,8 @@ namespace GameBoxClicker
             _waiter = new WaitForSeconds(_delayBetweenSpawn);
             _onPauseGame.RegisterListener(PauseGame);
             _onContinueGame.RegisterListener(ContinueGame);
-            _spawnProcessRoutine = StartCoroutine(SpawnProcess());
+
+            Task task = PreloadData();
         }
         public void EndGame()
         {
@@ -62,25 +67,46 @@ namespace GameBoxClicker
             }
             _onPauseGame.UnregisterListener(PauseGame);
             _onContinueGame.UnregisterListener(ContinueGame);
+            count = _levelContentReferences.Length;
+            for (int k = 0; k < count; k++)
+            {
+                AddressablesPreloader.ReleaseFromReference(_levelContentReferences[k]);
+            }
         }
 
+        private void StartSpawn()
+        {
+            _spawnProcessRoutine = StartCoroutine(SpawnProcess());
+        }
+        private async Task PreloadData()
+        {
+            int count = _levelContentReferences.Length;
+            _levelContents = new GameObject[count];
+            for (int k = 0; k < count; k++)
+            {
+                await AddressablesPreloader.LoadFromReference(_levelContentReferences[k]
+                    , (GameObject gameObject) =>
+                    {
+                        _levelContents[k] = gameObject;
+                    });
+            }
+            OnDataPreloaded?.Invoke();
+        }
         private IEnumerator SpawnProcess()
         {
             yield return _waiter;
-            Task task = CreateContent();
+            CreateContent();
             _spawnProcessRoutine = StartCoroutine(SpawnProcess());
         }
-        private async Task CreateContent()
+        private void CreateContent()
         {
-           bool isThereFreeField= CheckFofreeField(out List<int> freeFieldNumbers);
-            if (!isThereFreeField || _fields.Length- freeFieldNumbers.Count >= _maxContentCount) return;
-            int fieldNumber = freeFieldNumbers[Random.Range(0, freeFieldNumbers.Count)];
+            bool isThereFreeField = CheckFofreeField(out List<int> freeFieldNumbers);
+            if (!isThereFreeField || _fields.Length - freeFieldNumbers.Count >= _maxContentCount) return;
+            int fieldNumber = freeFieldNumbers[UnityEngine.Random.Range(0, freeFieldNumbers.Count)];
             _fields[fieldNumber].IsEmpty = false;
             Transform targetTransform = _fields[fieldNumber].SpawnTransform;
-            AsyncOperationHandle<GameObject> handle = Addressables
-                .InstantiateAsync(_creatingContent, targetTransform.position, targetTransform.rotation, targetTransform);
-            await handle.Task;
-            MergeContent content = handle.Result.GetComponent<MergeContent>();
+            GameObject gameObject = Instantiate(_levelContents[0], targetTransform.position, targetTransform.rotation, targetTransform);
+            MergeContent content = gameObject.GetComponent<MergeContent>();
             _fields[fieldNumber].CurrentContent = content;
             content.Field = _fields[fieldNumber];
         }
