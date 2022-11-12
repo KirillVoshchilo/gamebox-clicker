@@ -30,7 +30,7 @@ namespace GameBoxClicker.Canvases
         }
         public void StartNewGame()
         {
-
+            _tmpro.text = "0";
         }
 
         private void ShowResources(int value)
