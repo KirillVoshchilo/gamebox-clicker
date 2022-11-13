@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GameBoxClicker
 {
-    public class MusicHandler : MonoBehaviour, IStartEndGame, IPauseHandler
+    public class MusicHandler : MonoBehaviour, IStartNewGame, IPauseHandler, IEndGame
     {
         [SerializeField] private AudioClip[] _mainMenuTheme;
         [SerializeField] private AudioClip[] _gameThemes;
@@ -19,6 +19,7 @@ namespace GameBoxClicker
         private WaitForSeconds _checkerWaiter;
         private AudioClip[] _currentPlayList;
         private Coroutine _musicCheckerRoutine;
+
         private void Awake()
         {
             _currentPlayList = _mainMenuTheme;
@@ -28,7 +29,7 @@ namespace GameBoxClicker
             _onPauseGame.RegisterListener(PauseGame);
             _onStartNewGame.RegisterListener(StartNewGame);
             _onEndGame.RegisterListener(EndGame);
-            _musicCheckerRoutine= StartCoroutine(ClipCompletionChecker());
+            _musicCheckerRoutine = StartCoroutine(ClipCompletionChecker());
             OnEndOfClip += ChangeClip;
         }
         private void OnDestroy()
@@ -54,7 +55,7 @@ namespace GameBoxClicker
         public void PauseGame()
         {
             _audioSource.Pause();
-          StopCoroutine(_musicCheckerRoutine);
+            StopCoroutine(_musicCheckerRoutine);
         }
         public void StartNewGame()
         {
@@ -74,7 +75,6 @@ namespace GameBoxClicker
         }
         private AudioClip RandomClip(AudioClip[] clips)
         {
-            int count = clips.Length;
             int value = UnityEngine.Random.Range(0, clips.Length - 1);
             return clips[value];
         }
@@ -91,6 +91,5 @@ namespace GameBoxClicker
         {
             PlayClip(RandomClip(_currentPlayList));
         }
-
     }
 }

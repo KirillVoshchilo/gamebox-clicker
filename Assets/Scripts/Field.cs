@@ -15,6 +15,5 @@ namespace GameBoxClicker
             IsEmpty = true;
             CurrentContent = null;
         }
-
     }
 }

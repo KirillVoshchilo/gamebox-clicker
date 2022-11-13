@@ -91,7 +91,7 @@ namespace GameBoxClicker
         {
             _targetPosition = _defaultPosition;
             _positionOfStartClick = PlayerInputHandler.PointerPosition;
-            WaitUntil waiter = new WaitUntil(CheckForStartDragging);
+            WaitUntil waiter = new (CheckForStartDragging);
             yield return waiter;
             _calcTargetRoutine = StartCoroutine(CalcTergetPositionProcess());
             waiter = new WaitUntil(CheckForDrop);

@@ -9,22 +9,21 @@ namespace GameBoxClicker.ScriptableData
     public class MergeActions : ScriptableObject
     {
         [SerializeField] private AssetReference[] _mergeContentAssets;
-        [SerializeField] private ScriptableIntEvent _onLastMerge;
-        [SerializeField] private int _onLastMergeEarn;
+        [SerializeField] private ScriptableFloatEvent _onLastMerge;
+        [SerializeField] private float _onLastMergeEarn;
 
         public void OrdinaryMerge(MergeContent target, MergeContent current)
         {
             Task task = AddressablesPreloader.LoadFromReference(ChooseNextLevelContent(target.ObjetReference), (GameObject obj) =>
               {
-                  Destroy(current.gameObject);
-                  Destroy(target.gameObject);
-                  current.Field.ClearTheField();
                   GameObject gameObject = Instantiate(obj, target.transform.position, target.transform.rotation, target.Field.SpawnTransform);
                   MergeContent newContent = gameObject.GetComponent<MergeContent>();
                   newContent.Field = target.Field;
                   newContent.Field.CurrentContent = newContent;
+                  current.Field.ClearTheField();
+                  Destroy(current.gameObject);
+                  Destroy(target.gameObject);
               });
-
         }
         public void LastMerge(MergeContent target, MergeContent current)
         {

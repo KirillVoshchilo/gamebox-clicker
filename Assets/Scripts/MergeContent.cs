@@ -21,16 +21,16 @@ namespace GameBoxClicker
 
         public void CheckForPotentialMerge()
         {
-            RaycastHit[] hits = Physics.SphereCastAll(transform.position, _radius, Vector3.down, 0.01f);
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, _radius * 0.5f, Vector3.down, 0.01f);
             int count = hits.Length;
             for (int k = 0; k < count; k++)
             {
                 GameObject gameObject = hits[k].collider.gameObject;
-                if (gameObject.TryGetComponent(out MergeContent content))
+                if (gameObject.TryGetComponent(out MergeContent target))
                 {
-                    if (content != this && content.ObjetReference == ObjetReference)
+                    if (target != this && target.ObjetReference == ObjetReference)
                     {
-                        _onMerge?.Invoke(content, this);
+                        _onMerge?.Invoke(target, this);
                         return;
                     }
                 }

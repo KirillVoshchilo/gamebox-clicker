@@ -6,19 +6,19 @@ namespace GameBoxClicker.AppEvents
     [CreateAssetMenu(fileName = "new ScriptableEvent", menuName = "Scriptable Event/Scriptable Event")]
     public class ScriptableEvent : ScriptableObject
     {
-        private event Action _listeners;
+        private event Action Listeners;
 
         public void Raise()
         {
-            _listeners?.Invoke();
+            Listeners?.Invoke();
         }
         public void RegisterListener(Action listener)
         {
-            _listeners += listener;
+            Listeners += listener;
         }
         public void UnregisterListener(Action listener)
         {
-            _listeners -= listener;
+            Listeners -= listener;
         }
     }
 }

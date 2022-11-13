@@ -6,8 +6,8 @@ namespace GameBoxClicker
 {
     public class ClickResourceMaker : MonoBehaviour, IPointerClickHandler, IPauseHandler
     {
-        [SerializeField] private int _earnPerTime;
-        [SerializeField] private ScriptableIntEvent _onEarnResources;
+        [SerializeField] private ContentSettings _contentSettings;
+        [SerializeField] private ScriptableFloatEvent _onEarnResources;
         [SerializeField] private ScriptableEvent _onPauseGame;
         [SerializeField] private ScriptableEvent _onContinueGame;
         private bool _isActive;
@@ -30,7 +30,7 @@ namespace GameBoxClicker
         }
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (_isActive) _onEarnResources.Raise(_earnPerTime);
+            if (_isActive) _onEarnResources.Raise(_contentSettings.EarnPerClick);
         }
         public void PauseGame()
         {

@@ -4,38 +4,25 @@ using UnityEngine;
 
 namespace GameBoxClicker.Canvases
 {
-    public class ResourcesOutput : MonoBehaviour, IStartEndGame
+    public class ResourcesOutput : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _tmpro;
-        [SerializeField] private ScriptableIntEvent _onResourcesChanged;
+        [SerializeField] private ScriptableFloatEvent _onResourcesChanged;
         [SerializeField] private ScriptableEvent _onStartNewGame;
-        [SerializeField] private ScriptableEvent _onEndGame;
+        private string _outputFormat="0.#"; 
 
-        private void OnEnable()
+        private void Awake()
         {
             _onResourcesChanged.RegisterListener(ShowResources);
-            _onStartNewGame.RegisterListener(StartNewGame);
-            _onEndGame.RegisterListener(EndGame);
         }
-        private void OnDisable()
+        private void OnDestroy()
         {
             _onResourcesChanged.UnregisterListener(ShowResources);
-            _onStartNewGame.UnregisterListener(StartNewGame);
-            _onEndGame.UnregisterListener(EndGame);
         }
 
-        public void EndGame()
+        private void ShowResources(float value)
         {
-            _tmpro.text = "0";
-        }
-        public void StartNewGame()
-        {
-            _tmpro.text = "0";
-        }
-
-        private void ShowResources(int value)
-        {
-            _tmpro.text = value.ToString();
+            _tmpro.text = value.ToString(_outputFormat);
         }
     }
 }

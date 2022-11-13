@@ -8,7 +8,7 @@ using UnityEngine.AddressableAssets;
 
 namespace GameBoxClicker
 {
-    public class ContentMaker : MonoBehaviour, IPauseHandler, IStartEndGame
+    public class ContentMaker : MonoBehaviour, IPauseHandler, IStartNewGame, IEndGame
     {
         [SerializeField] private AssetReference[] _levelContentReferences;
         [SerializeField] private int _maxContentCount;
@@ -54,7 +54,6 @@ namespace GameBoxClicker
             _waiter = new WaitForSeconds(_delayBetweenSpawn);
             _onPauseGame.RegisterListener(PauseGame);
             _onContinueGame.RegisterListener(ContinueGame);
-
             Task task = PreloadData();
         }
         public void EndGame()
@@ -63,6 +62,7 @@ namespace GameBoxClicker
             int count = _fields.Length;
             for (int k = 0; k < count; k++)
             {
+                if (_fields[k].CurrentContent != null) Destroy(_fields[k].CurrentContent.gameObject);
                 _fields[k].ClearTheField();
             }
             _onPauseGame.UnregisterListener(PauseGame);
@@ -76,6 +76,7 @@ namespace GameBoxClicker
 
         private void StartSpawn()
         {
+            CreateContent();
             _spawnProcessRoutine = StartCoroutine(SpawnProcess());
         }
         private async Task PreloadData()
@@ -126,7 +127,5 @@ namespace GameBoxClicker
         {
             _fields = GetComponentsInChildren<Field>();
         }
-
-
     }
 }

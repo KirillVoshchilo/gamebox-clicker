@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc1da52fa59c8649af257b819902f1a, type: 3}
-  m_Name: OnLastMerge
+  m_Script: {fileID: 11500000, guid: a648fbad89058e743bbdfcd1d470c639, type: 3}
+  m_Name: OnUpgradeContent
   m_EditorClassIdentifier: 

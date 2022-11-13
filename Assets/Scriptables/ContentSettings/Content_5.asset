@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc1da52fa59c8649af257b819902f1a, type: 3}
-  m_Name: OnLastMerge
+  m_Script: {fileID: 11500000, guid: 8b5bedf44b07fd049b2a546960894723, type: 3}
+  m_Name: Content_5
   m_EditorClassIdentifier: 
+  _defaultEarnPerClick: 3.2
+  _defaultIncome: 16
+  _defaultDelayBetweenIncome: 2
+  _onStartNewGame: {fileID: 11400000, guid: 70fe45f009466c441a7e8c15003f0ea0, type: 2}

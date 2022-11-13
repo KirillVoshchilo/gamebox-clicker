@@ -9,7 +9,7 @@ namespace GameBoxClicker
 {
     public class AddressablesPreloader
     {
-        private static Dictionary<AssetReference, GameObject> s_preloadedObjects = new Dictionary<AssetReference, GameObject>();
+        private static Dictionary<AssetReference, GameObject> s_preloadedObjects = new ();
 
         public static async Task LoadFromReference(AssetReference reference, Action<GameObject> onCompleted)
         {

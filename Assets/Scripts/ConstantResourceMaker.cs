@@ -6,9 +6,8 @@ namespace GameBoxClicker
 {
     public class ConstantResourceMaker : MonoBehaviour, IPauseHandler
     {
-        [SerializeField] private int _earnPerTime;
-        [SerializeField] private float _delayBetweenEarn;
-        [SerializeField] private ScriptableIntEvent _onEarnResources;
+        [SerializeField] private ContentSettings _contentSettings;
+        [SerializeField] private ScriptableFloatEvent _onEarnResources;
         [SerializeField] private ScriptableEvent _onPauseGame;
         [SerializeField] private ScriptableEvent _onContinueGame;
 
@@ -17,7 +16,7 @@ namespace GameBoxClicker
 
         private void Awake()
         {
-            _waiter = new WaitForSeconds(_delayBetweenEarn);
+            _waiter = new WaitForSeconds(_contentSettings.DelayBetweenIncome);
             _earnProcessRoutine = StartCoroutine(EarnProcess());
             _onPauseGame.RegisterListener(PauseGame);
             _onContinueGame.RegisterListener(ContinueGame);
@@ -40,7 +39,7 @@ namespace GameBoxClicker
         private IEnumerator EarnProcess()
         {
             yield return _waiter;
-            _onEarnResources.Raise(_earnPerTime);
+            _onEarnResources.Raise(_contentSettings.Income);
             _earnProcessRoutine = StartCoroutine(EarnProcess());
         }
     }

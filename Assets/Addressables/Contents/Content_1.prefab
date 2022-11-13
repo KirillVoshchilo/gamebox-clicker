@@ -113,11 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f624afd6f3b5cf146bba92127ad3dada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeTo:
-    m_AssetGUID: e6959c52dea07e94f9fffac19fdbff6c
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
   _thisObjectReference:
     m_AssetGUID: cd6c31bbc80cf5a47a135c36b3f06038
     m_SubObjectName: 
@@ -151,9 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266c8ac8dbcc90048a84f2796c67b07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _earnPerTime: 1
-  _delayBetweenEarn: 1
-  _onEarnResources: {fileID: 11400000, guid: 0f4c1c398c4e0a24482f697a390dc989, type: 2}
+  _contentSettings: {fileID: 11400000, guid: e85e9a3a84c15d248bb0f9871bbff74a, type: 2}
+  _onEarnResources: {fileID: 11400000, guid: 56ffb44f0a6ff354eba9375fc3db7a0e, type: 2}
   _onPauseGame: {fileID: 11400000, guid: f8631f84bf4156046922c3871913a45c, type: 2}
   _onContinueGame: {fileID: 11400000, guid: 24d1b067060ddc84ab4c6c5d4db380fb, type: 2}
 --- !u!114 &6325005603747382530
@@ -168,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774f3d8de61faab418acad4c58ad9602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _earnPerTime: 1
-  _onEarnResources: {fileID: 11400000, guid: 0f4c1c398c4e0a24482f697a390dc989, type: 2}
+  _contentSettings: {fileID: 11400000, guid: e85e9a3a84c15d248bb0f9871bbff74a, type: 2}
+  _onEarnResources: {fileID: 11400000, guid: 56ffb44f0a6ff354eba9375fc3db7a0e, type: 2}
   _onPauseGame: {fileID: 11400000, guid: f8631f84bf4156046922c3871913a45c, type: 2}
   _onContinueGame: {fileID: 11400000, guid: 24d1b067060ddc84ab4c6c5d4db380fb, type: 2}
 --- !u!114 &2919154290984495950

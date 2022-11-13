@@ -3,16 +3,15 @@ using UnityEngine;
 
 namespace GameBoxClicker
 {
-    public class PlayerResources : MonoBehaviour, IStartEndGame
+    public class PlayerResources : MonoBehaviour, IStartNewGame
     {
-        [SerializeField] private ScriptableIntEvent _onEarnResources;
-        [SerializeField] private ScriptableIntEvent _onResourcesChanged;
+        [SerializeField] private ScriptableFloatEvent _onEarnResources;
+        [SerializeField] private ScriptableFloatEvent _onResourcesChanged;
         [SerializeField] private ScriptableEvent _onStartNewGame;
-        [SerializeField] private ScriptableEvent _onEndGame;
-        [SerializeField] private ScriptableIntEvent _onLastMergeEarn;
-        private int _currentResources;
+        [SerializeField] private ScriptableFloatEvent _onLastMergeEarn;
+        private float _currentResources;
 
-        public int CurrentResources
+        public float CurrentResources
         {
             get
             {
@@ -21,7 +20,7 @@ namespace GameBoxClicker
             set
             {
                 _currentResources = value;
-                _onResourcesChanged?.Raise(_currentResources);
+                if (_onResourcesChanged!=null) _onResourcesChanged.Raise(_currentResources);
             }
         }
 
@@ -30,19 +29,12 @@ namespace GameBoxClicker
             _onLastMergeEarn.RegisterListener(AddResources);
             _onEarnResources.RegisterListener(AddResources);
             _onStartNewGame.RegisterListener(StartNewGame);
-            _onEndGame.RegisterListener(EndGame);
         }
         private void OnDestroy()
         {
             _onEarnResources.UnregisterListener(AddResources);
             _onStartNewGame.UnregisterListener(StartNewGame);
-            _onEndGame.UnregisterListener(EndGame);
             _onLastMergeEarn.UnregisterListener(AddResources);
-        }
-
-        private void AddResources(int value)
-        {
-            CurrentResources += value;
         }
 
         public void StartNewGame()
@@ -50,9 +42,9 @@ namespace GameBoxClicker
             CurrentResources = 0;
         }
 
-        public void EndGame()
+        private void AddResources(float value)
         {
-            CurrentResources = 0;
+            CurrentResources += value;
         }
     }
 }

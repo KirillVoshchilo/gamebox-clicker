@@ -1,8 +1,7 @@
 namespace GameBoxClicker.AppEvents
 {
-    public interface IStartEndGame
+    public interface IEndGame
     {
-        public void StartNewGame();
         public void EndGame();
     }
 }
