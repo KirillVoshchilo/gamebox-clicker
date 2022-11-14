@@ -1,18 +1,18 @@
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 
 namespace GameBoxClicker
 {
     public class MergeContent : MonoBehaviour
     {
-        [SerializeField] private AssetReference _thisObjectReference;
+        [SerializeField] private string _id;
         [SerializeField] private SphereCollider _collider;
         [SerializeField] private UnityEvent<MergeContent, MergeContent> _onMerge;
         private float _radius;
 
         public Field Field { get; set; }
-        public string ObjetReference => _thisObjectReference.AssetGUID;
+
+        public string ID => _id;
 
         private void Awake()
         {
@@ -28,7 +28,7 @@ namespace GameBoxClicker
                 GameObject gameObject = hits[k].collider.gameObject;
                 if (gameObject.TryGetComponent(out MergeContent target))
                 {
-                    if (target != this && target.ObjetReference == ObjetReference)
+                    if (target.ID == this.ID&& target!= this)
                     {
                         _onMerge?.Invoke(target, this);
                         return;

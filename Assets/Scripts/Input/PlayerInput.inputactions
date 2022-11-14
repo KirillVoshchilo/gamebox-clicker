@@ -39,7 +39,7 @@
                 {
                     "name": "",
                     "id": "dff824e2-6438-4c37-a8a9-eb4c1006f6c7",
-                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": "Android",
@@ -61,7 +61,7 @@
                 {
                     "name": "",
                     "id": "14b30f9d-1ac8-40d1-ad19-dc4eadb033c0",
-                    "path": "<Touchscreen>/primaryTouch/position",
+                    "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Android",
