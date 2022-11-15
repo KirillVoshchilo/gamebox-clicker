@@ -20,4 +20,8 @@
 На каждой кнопке отображены уровень прокачки шара и стоимость его новой прокачки.
 - Прокачка шара увеличивает его пассивный доход, и доход по клику.
 
-В игре есть: работа с лучами, sphereCast, ScriptableObject, event, UnityEvent, InputSystem
+
+**В игре есть:** работа с лучами, sphereCast, ScriptableObject, event, UnityEvent, InputSystem, cinamachine
+
+**Версия unity:** 2021.3.11f1.
+**Доп пакеты для unity:** InputSystem, Cinemachine
