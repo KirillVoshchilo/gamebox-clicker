@@ -84,6 +84,7 @@ namespace GameBoxClicker
         }
         private bool CheckForStartDragging()
         {
+            if (PlayerInputHandler.HoldClick == false) StopAllCoroutines();
             float distance = (_positionOfStartClick - PlayerInputHandler.PointerPosition).magnitude;
             return _distanceBeforeDrag < distance;
         }
