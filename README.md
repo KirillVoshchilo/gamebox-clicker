@@ -24,4 +24,5 @@
 **В игре есть:** работа с лучами, sphereCast, ScriptableObject, event, UnityEvent, InputSystem, cinamachine
 
 **Версия unity:** 2021.3.11f1.
+
 **Доп пакеты для unity:** InputSystem, Cinemachine
