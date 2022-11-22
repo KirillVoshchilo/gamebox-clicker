@@ -1,23 +1,23 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace GameBoxClicker.Input
+namespace GameBoxClicker.Services.Input
 {
-    public class PlayerInputHandler : MonoBehaviour, PlayerInput.IGameActions
+    public class InputService : PlayerInput.IGameActions, IInputService
     {
-        public static Vector2 PointerPosition;
-        public static bool HoldClick;
 
         private PlayerInput _playerInput;
 
-        private void Awake()
+        public bool HoldClick { get; set; }
+        public Vector2 PointerPosition { get; set; }
+
+        public InputService()
         {
             HoldClick = false;
             _playerInput = new PlayerInput();
             _playerInput.Game.SetCallbacks(this);
             _playerInput.Game.Enable();
         }
-
         public void OnClick(InputAction.CallbackContext context)
         {
             HoldClick = context.control.IsPressed();
@@ -26,6 +26,5 @@ namespace GameBoxClicker.Input
         {
             PointerPosition = context.ReadValue<Vector2>();
         }
-
     }
 }
